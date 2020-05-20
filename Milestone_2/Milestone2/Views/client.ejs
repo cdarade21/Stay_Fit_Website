@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Club Members</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="client_bg">
+<%- include('./partials/header.ejs'); %>
+<div class="appointment">
+<h1 id="appointmment">UPCOMING Appointments</h1>
+<br>
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>Category</th>
+    <th>Going</th>
+    <th>Actions</th>
+  </tr>
+  <%connDBlist.forEach(function(item){%>
+    <tr>
+      <td><%=item.connTopic%></td>
+      <td><%=item.connName%></td>
+      <td>Yes</td>
+      <td>
+        <div>
+          <button class='yoga_button_update' onclick="window.location.href = 'client';">UPDATE</button>
+          <button class='yoga_button_delete' onclick="window.location.href = 'connDetails';">DELETE</button>
+      	</div>
+      </td>
+    </tr>
+  <%})%>
+</table>
+</div>
+<%- include('./partials/footer.ejs'); %>
+</body>
+</html>

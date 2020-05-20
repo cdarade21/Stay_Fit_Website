@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Yoga</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="yoga_bg">
+<%- include('./partials/header.ejs'); %>
+<div class="row">
+  <div class="yoga_top">
+    <h1><b>LiveFit Yoga</b></h1>
+    <p id="Yoga_top">Find Your Inner Peace.</p>
+  </div>
+  <br>
+
+  <div class="yoga_bottom">
+    <% const conn_list = ['PT','GT','FT'];
+    if (connObject=="Not_Found" || conn_list.includes(connObject.connId.slice(-2))==0){%>
+      <table style="width:100%">
+        <tr>
+          <td id=address_contact>Invalid Connection ID Provided. Please insert Correct ID!</td>
+        </tr>
+      </table>
+    <%}
+    else {
+      var last2 = connObject.connId.slice(-2);
+      if(conn_list.includes(last2)){%>
+        <h1><b><%= connObject.connName %></b></h1><br>
+        <%}
+        else {%>
+          <li><a href="connDetails"</a></li>
+        <%}%>
+        <p class="Yoga_bottom"><%= connObject.details%></p><br>
+        <p class="Yoga_bottom"><%= connObject.host%></p><br>
+        <p class="Yoga_bottom"><%= connObject.date%></p><br>
+        <p class="Yoga_bottom"><%= connObject.time%></p><br>
+		    <p id="Yoga_attendance">Are You Attending the Class?</p><br>
+		    <div>
+    	     <button class='yoga_button' id='Yes_button' onclick="window.location.href = 'client';">Yes</button>
+    	     <button class='yoga_button' id='No_button' onclick="window.location.href = 'client';">No</button>
+    	     <button class='yoga_button' id='Maybe_button' onclick="window.location.href = 'client';">Maybe</button>
+		    </div>
+      <%}%>
+    </div>
+</div>
+<%- include('./partials/footer.ejs'); %>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Classes</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="main_bg">
+<%- include('./partials/header.ejs'); %>
+<div class="row">
+  <div class="class_side_left">
+    <h1>Training</h1>
+  </div>
+
+  <div class="class_side_right">
+        <% topic.forEach(function(item){ %>
+            <h1><%= item %></h1>
+            <% var topic_item = item
+              connDBlist.forEach(function(item){
+                  if(item.connTopic==topic_item) { %>
+                  <ul>
+                     <% const usp = new URLSearchParams({
+                       connId: item.connId
+                     })%>
+                     <% var url="Classes_Detail?" + usp %>
+                     <li><a href="<%= url %>"><%= item.connName %></a></li>
+                  </ul>
+              <% }
+                })
+            })%>
+  </div>
+</div>
+
+<%- include('./partials/footer.ejs'); %>
+</body>
+</html>
