@@ -1,0 +1,57 @@
+<!--Client(SavedConnections) ejs Page-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Club Members</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="client_bg">
+<%- include('./partials/header.ejs'); -%>
+<div class="appointment">
+<h1 id="appointmment">Chaitanya's Events</h1>
+<br>
+<table>
+  <%  if(user_client !== undefined && user_client.conn_list!=""){ %>
+    <tr>
+      <th>Activity</th>
+      <th>Category</th>
+      <th>Going</th>
+      <th>Actions</th>
+    </tr>
+  <%  for (let j=0 ; j<user_client.conn_list.length; j++) 
+    { %>
+    <tr>
+      <td><% var con = connDB.getConnectionbyId(user_client.conn_list[j].userConn) %>
+        <%= con.connTopic %></td>
+      <td><%= con.connName %></td>
+      <td><%= user_client.conn_list[j].userRsvp %></td>
+      <td>
+        <div>
+          <% var param = new URLSearchParams({
+            connId: user_client.conn_list[j].userConn
+            });
+          %>
+          <% var url="Classes_Detail?" + param  %>  <!--Setting url for "Update" button with userConnId-->
+          <button class='yoga_button_update' onclick="window.location.href='<%= url %>';">UPDATE</button>
+
+          <% var url="client?" + param  %>          <!--Setting url for "Delete" button with userConnId-->
+          <button class='yoga_button_delete' onclick="window.location.href='<%= url %>';">DELETE</button>
+      	</div>
+      </td>
+    </tr>
+  <%}}
+  else{%>    <!--When No connections are found-->
+    <tr>
+      <td>You have no events in your profile. Please checkout intersting events we offer. 
+      </td>
+    </tr>
+  <%}%>
+  </table>
+  </div>
+<%- include('./partials/footer.ejs'); -%>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!--Login ejs file-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Classes</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="main_bg">
+<%- include('./partials/header.ejs'); %>
+
+<form action="/client" method="post">
+  <div class="login_container_left">
+    <h1>Login Form</h1>
+  </div>
+  <div class="login_container_right">
+    <h2>Welcome to the STAY FIT club!</h2><br><br><br>
+    <label for="uname"><b>Username</b></label>
+    <input type="text" id="uname" placeholder="Enter Username" name="uname"><br><br>
+
+    <label for="password"><b>Password</b></label><br>
+    <input type="text" id="password" placeholder="Enter Password" name="password"><br><br>
+
+    <button class='yoga_button' id='Yes_button' type="submit" onclick="window.location.href = 'client';">Login</button><br><br><br>
+
+  </div>
+</form>
+
+<%- include('./partials/footer.ejs'); %>
+</body>
+</html>
