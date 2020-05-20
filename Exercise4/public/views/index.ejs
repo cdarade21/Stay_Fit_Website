@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="./../assets/styles/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Welcome to the course app!</h1>
+    <form id="Course-form" method="POST" action=/coursedetails>
+        <label for="courseID">Course ID</label><br>
+        <input type="text" name="courseID" value="<%= qs.courseID %>">
+        <label for="title">Course Title</label><br>
+        <input type="text" name="title" value="<%= qs.title %>">
+        <label for="term">Term</label><br>
+        <input type="text" name="term" value="<%= qs.term %>">
+        <label for="instructor">Instructor</label><br>
+        <input type="text" name="instructor" value="<%= qs.instructor %>">
+        <input type="submit" value="submit">
+    </form>
+  </body>
+</html>
