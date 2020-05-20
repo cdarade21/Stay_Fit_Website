@@ -1,0 +1,66 @@
+<!--New connections page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>NewConnection</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./../styles/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<%- include('./partials/header.ejs'); %>
+<h1 id="stay_fit">Connection Form</h1>
+<div class="container2">
+	<%if (typeof errorlist != 'undefined'){ %>
+		<h2>There was one or more errors in your entry. Please try again!</h2>
+		<div class="error_table">
+			<table >
+				<% for (var i = 0; i < errorlist.length ; i++) { %>
+				<tr>
+					<td> Invalid value <%=errorlist[i].value%> "<%=errorlist[i].param%>"
+						<%=errorlist[i].msg%>
+					</td>
+				</tr>
+				<% } %>
+			</table>
+		</div>
+	<%}%>
+<!--<form action="http://localhost:8000/index" method="post">-->
+<form action="/new_connection" method="post">
+  <label for="topic">Topic:  </label>
+	<input type="text" id="topic" name="topic" placeholder="topic"><br><br>
+	
+	<label for="name">Name: </label>
+	<input type="text" id="name" name="name" placeholder="Name"><br><br>
+	
+	<label for="details">Details</label>
+	<input type="text" id="details" name="details" placeholder="description"><br><br>
+  
+	<label for="where">Where: </label>
+	<select id="where" name="where" size="2">
+		<option value="Charlotte Midtown">Charlotte Midtown</option>
+		<option value="Charlotte Uptown">Charlotte Uptown</option>
+	  </select><br>
+  
+	<label for="date">Date:</label>
+	<input type="date" id="date" name="date" ><br><br>
+	
+	<label for="host">Host: </label>
+	<select id="host" name="host" size="3">
+		<option value="Chaitanya Darade">Chaitanya Darade</option>
+		<option value="Digvijay Gole">Digvijay Gole</option>
+		<option value="Ankit Kejriwal">Ankit Kejriwal</option>
+	  </select><br>
+  	
+	<label for="time">Time: (Book a slot in between 08:00 to 20:00)</label>
+	<input type="text" id="start_time" name="start_time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" placeholder="Time start">
+
+	<input type="text" id="end_time" name="end_time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" placeholder="Time end"><br>
+  
+	<input type="submit" id="submit" value="Submit">
+</form>
+</div>
+<%- include('./partials/footer.ejs'); %>
+</body>
+</html>

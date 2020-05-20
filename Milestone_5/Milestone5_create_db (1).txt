@@ -1,0 +1,102 @@
+
+mongod --dbpath /usr/local/mongodb/data/db/
+
+mongo            
+
+use Milestone4
+
+db.createUser({
+	user:"Chaitanya",
+	pwd:"801135814",
+	roles: ["readWrite","dbAdmin"]
+
+});
+
+db.createCollection("UserProfile");
+db.createCollection("Connections");
+db.createCollection("User");
+
+db.Connections.insert([{cid:"1",
+			name:"CONSULTATION AND ASSESSMENT",
+			topic:"PERSONAL TRAINING",
+			details:"Self-Diagnoses with Comfort and Convenience",
+			date:"01/23/20",
+			host:"Chaitanya Darade",
+			start_time:"12:00",
+			end_time:"1:00",
+			where:"Charlotte midtown"},
+
+			{cid:"2",
+			name:"CUSTOMIZED WORKOUT PROGRAM",
+			topic:"PERSONAL TRAINING",
+			details:"Challenge clients to be better.",
+			date:"02/23/20",
+			host:"Chaitanya Darade",
+			start_time:"12:00",
+			end_time:"1:00",
+			where:"Charlotte midtown"},
+
+			{cid:"3",
+			name:"PERSONAL TRAINING SESSIONS",
+			topic:"PERSONAL TRAINING",
+			details:"Take care of your body. It’s the only place you have to live.",
+			date:"02/19/20",
+			host:"Digvijay Gole",
+			start_time:"12:00",
+			end_time:"1:00",
+			where:"Charlotte midtown"},
+
+			{cid:"4",
+			name:"RISE AND SHINE",
+			topic:"GROUP TRAINING",
+			details:"The art of medicine consists of amusing the patient while nature cures the disease.",
+			date:"01/15/20",
+			host:"Digvijay Gole",
+			start_time:"12:00",
+			end_time:"1:00",
+			where:"Charlotte Uptown"},
+			
+			{cid:"5",
+			name:"YOGA",
+			topic:"GROUP TRAINING",
+			details:"Yoga is a combination of strength, balance, and flexibility.",
+			date:"03/15/20",
+			host:"Ankit Kejriwal",
+			start_time:"12:00",
+			end_time:"1:00",
+			where:"Charlotte Uptown"},
+
+			{cid:"6",
+			name:"GROUP EXERCISE",
+			topic:"GROUP TRAINING",
+			details:"Group focused on gaining Endurance and Flexibility.",
+			date:"01/22/20",
+			host:"Ankit Kejriwal",
+			start_time:"12:00",
+			end_time:"1:00",
+			where:"Charlotte Uptown"}
+]);
+
+db.Users.insert([{
+		fname: "Chaitanya",
+		lname: "Darade",
+		email:"cdarade@gmail.com",
+		psw:"801135814",
+		addr:"9515-D, UTD",
+		city:"Charlotte",
+		state:"NC",
+		country:"USA",
+		zipcode:"28262"},
+
+		{
+		fname: "Digvijay",
+		lname: "Gole",
+		email:"dg@gmail.com",
+		psw:"1234",
+		addr:"9515-D, UTD",
+		city:"Charlotte",
+		state:"NC",
+		country:"USA",
+		zipcode:"28262"},
+
+]);

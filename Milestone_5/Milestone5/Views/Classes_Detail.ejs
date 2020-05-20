@@ -1,0 +1,65 @@
+<!--Class Detail ejs page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Yoga</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="yoga_bg">
+<%- include('./partials/header.ejs'); %>
+<div class="row">
+  <div class="yoga_top">
+    <h1><b>LiveFit Yoga</b></h1>
+    <p id="Yoga_top">Find Your Inner Peace.</p>
+  </div>
+  <br>
+
+  <div class="yoga_bottom">
+        <h1><b><%= connObject.name %></b></h1><br>
+        <p class="Yoga_bottom"><%= connObject.details%></p><br>
+        <p class="Yoga_bottom"><%= connObject.host%></p><br>
+        <p class="Yoga_bottom">On <%= connObject.date%></p><br>
+        <p class="Yoga_bottom"><%= connObject.start_time%> To <%= connObject.end_time%></p>
+		    <p id="Yoga_attendance">Are You Attending the Class?</p><br>
+		    <div>
+          <% if( typeof user !='undefined'){ %>
+            <form name="input" action="/client" method="post">	
+                    <input type="hidden" value="<%= token %>" name="token" />
+                    <input type="hidden" value="<%= connObject.cid %>" name="cid" />
+                    <input type="hidden" value="Yes" name="des" />
+
+                    <input type="submit" class='yoga_button' id='Yes_button'  value="Yes">
+            </form>
+            <form name="input" action="/client" method="post">	
+                    <input type="hidden" value="<%= token %>" name="token" /> 
+                    <input type="hidden" value="<%= connObject.cid %>" name="cid" />
+                    <input type="hidden" value="No" name="des" />
+
+                    <input type="submit" class='yoga_button' id='No_button'  value="No">
+            </form>
+                    
+            <form name="input" action="/client" method="post">		
+                    <input type="hidden" value="<%= token %>" name="token" />
+                    <input type="hidden" value="<%= connObject.cid %>" name="cid" />
+                    <input type="hidden" value="May be" name="des" />
+
+                    <input type="submit" class='yoga_button' id='Maybe_button' value="May be">	
+            </form>	
+                
+            <% } 
+            else { 
+                var url="login";   %>	
+            
+                <button class='yoga_button' id='Yes_button' onclick="window.location.href='<%= url %>';">Yes</button>
+                <button class='yoga_button' id='No_button'  onclick="window.location.href='<%= url %>';">No</button>
+                <button class='yoga_button' id='Maybe_button' onclick="window.location.href='<%= url %>';">Maybe</button>
+             <% } %>     
+		    </div>
+    </div>
+</div>
+<%- include('./partials/footer.ejs'); %>
+</body>
+</html>
