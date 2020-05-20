@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Info Page</title>
+    <link href="./../assets/styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="main">
+        <table id="course">
+          <% if (Object.keys(course).length === 0) { %>
+            <div>
+              <table>
+                <tr>
+                  <td>No course details available!</td>
+                </tr>
+              </table>
+            </div>
+	        <% } else { %>
+            <tr>
+                <th>Course Number</th>
+                <th>Title</th>
+                <th>Term</th>
+                <th>Instructor</th>
+            </tr>
+            <tr>
+                <td>
+                    <%= course.courseID %>
+                </td>
+                <td>
+                    <%= course.title %>
+                </td>
+                <td>
+                    <%= course.term %>
+                </td>
+                <td>
+                    <%= course.instructor %>
+                </td>
+            </tr>
+            <tr>
+              <td colspan="4" ><%- include('image.ejs') %></td>
+            </tr>
+        <% } %>
+        </table>
+    </div>
+</body>
+
+</html>
