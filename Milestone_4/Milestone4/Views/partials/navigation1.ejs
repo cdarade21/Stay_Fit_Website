@@ -1,0 +1,30 @@
+<!--Navigation1 page-->
+<link href="./../assets/styles/style.css" rel="stylesheet" type="text/css" />
+
+<div class="container">
+  <a href="index">
+    <img src="./../assets/images/logo.jpg " alt="Stay Fit Logo" class="logo">
+  </a>
+  <label class="page_title">STAY FIT</label>
+  <nav class="nav1">
+    <ul>
+      <li><a href="newConnection">Member Connection</a></li>
+      <% if (typeof user === 'undefined'){  %>
+      <li><a href="login">Login</a></li>
+      <%}
+      else{%>
+      <li><a href="client">My Events</a></li>
+      <%}%>
+      <% var param = new URLSearchParams({
+          value: "destroy"
+        });
+      %>
+      <% if (typeof user != 'undefined'){  %>
+        <% var url="index?" + param  %>
+        <li><a href='<%= url %>'>Sign-out</a></li>
+      <% } else { %>
+        <li><a href="newConnection">Sign-Up</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</div>
